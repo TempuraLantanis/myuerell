@@ -1,6 +1,13 @@
 from typing import Union
 from pydantic import BaseModel
 from fastapi import FastAPI
+from sqlalchemy import create_engine
+
+
+connection_string = "mysql+mysqlconnector://user:password@145.24.222.57:3310/testDB"
+engine = create_engine(connection_string,echo=True)
+
+
 
 app = FastAPI()
 
