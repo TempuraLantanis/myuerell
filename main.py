@@ -1,8 +1,22 @@
-from typing import Union
+from typing import Union, List
 from pydantic import BaseModel
-from fastapi import FastAPI
+from fastapi import fastapi
+
+# CORS (Cross-Origin Resource Sharing)
+origins = ["http://localhost",
+        "http://localhost:8080",
+        "http://localhost:8081",
+        "http://localhost:5173",]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app = FastAPI()
+
 
 
 class BalanceRequest(BaseModel):
@@ -33,7 +47,7 @@ def gibtoken():
 @app.post("/balance")
 async def balancePoint(request:BalanceRequest):
     try:
-        if request.pin== "223":
+        if request.pin== "9999":
             return{"auth":True, "balance":4000}
         else:
             return{"auth":False}
