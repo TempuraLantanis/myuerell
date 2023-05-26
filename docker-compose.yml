@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: "testDB"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+
+    ports:
+      - '3310:3306'
+    expose:
+      - '3306'
+
+
+
+
+
+# services:
+#   db:
+#     image: mysql:latest
+#     healthcheck:
+#       test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 --password="$$(cat /run/secrets/db-password)" --silent']
+#       interval: 3s
+#       retries: 5
+#       start_period: 30s
+
+#     container_name: testDB
+#     environment:
+#       - MYSQL_DATABASE=testDB
+#       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password.txt
+#     expose:
+#       - 3306  
+#       - 33060
+
+# volumes:
+#   db-data:
+#     - ./mysql:/var/lib/mysql
+
+# secrets:
+#   db-password:
+#     file: mysql/password.txt
